@@ -57,7 +57,7 @@ function carregarHistorico() {
             const flowValue = childSnapshot.val();
             listaflow.push(flowValue);
             const listItem = document.createElement('li');
-            listItem.textContent = flowValue.toFixed(2) + " L/min";
+            listItem.textContent = flowValue.toFixed(2) + " m³/h";
             historicoFluxos.appendChild(listItem);
         });
     });

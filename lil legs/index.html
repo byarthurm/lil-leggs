@@ -3,44 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bomba Centrífuga Dashboard</title>
+  <title>The Little Legs</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Bomba Centrífuga Dashboard</h1>
-    <div class="data-container">
-      <div class="sensor-data">
-        <h2>Temperatura da Bomba</h2>
 
-        <div id="temperature">
-          
-        </div>
-
+  <header>
+      <div class="logo">
+        <img src="img/logo-lillegs.png" alt="">
       </div>
-      <div class="sensor-data">
-        <h2>Fluxo de Óleo</h2>
-
-        <div id="flow">
-          
-        </div>
+      <div class=button-div> 
+        <button id="btnHistorico">Histórico</button>
       </div>
+  </header>
+
+  <main>
+    <div class="container-all">
+      <section class="sec-info">
+        <div class="container">
+          <div class="data-container">
+            <div class="sensor-data">
+              <h2>Temperatura</h2>
+              <div id="temperature"></div>
+            </div>
+            <div class="sensor-data">
+              <h2>Fluxo do fluido</h2>
+              <div id="flow"></div>
+            </div>
+          </div>
+          <div class="div-grafic">
+            <div class="grafic1"><h1>grafic1</h1></div>
+            <div class="grafic2"><h1>grafic2</h1></div>
+          </div>
+        </div>
+      </section>
+  
+      <section class="sec-status">
+        <div class="status">
+          <h1>status</h1>
+        </div>
+        <div class="teste-div"><h1>teste</h1></div>
+        <div class="teste-div"><h1>teste</h1></div>
+      </section>
     </div>
-  </div>
-
-  <button id="btnHistorico">Histórico</button>
-
-    <!-- Div para exibir o histórico -->
-    <div id="historico" style="display: none;">
-      <div class="historico">
-        <h2>Histórico de Temperaturas</h2>
-        <ul id="historico-temperaturas"></ul>
-      </div>
-      <div class="historico">
-        <h2>Histórico de Fluxos</h2>
-        <ul id="historico-fluxos"></ul>
-      </div>
-
+  </main>
 
   <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
   <script src="script.js"></script>
