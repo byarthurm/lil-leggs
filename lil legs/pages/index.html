@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Little Legs</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+
+  <header>
+      <div class="logo">
+        <img src="/img/logo-lillegs.png" alt="">
+      </div>
+      <div class=button-div> 
+        <button id="btnHistorico">Histórico</button>
+      </div>
+  </header>
+
+  <main>
+    <div class="container-all">
+      <section class="sec-info">
+        <div class="container">
+
+          <div class="data-container">
+            <div class="sensor-data-temp">
+              <h2>Temperatura</h2>
+              <div id="temperature"></div>
+            </div>
+            <div class="sensor-data-flow">
+              <h2>Fluxo do fluido</h2>
+              <div id="flow"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="div-leds">
+              <h2>Led's</h2>
+              <div class="led-blue"></div>
+              <div class="led-yellow"></div>
+              <div class="led-white"></div>
+              <h2>Legenda</h2>
+            </div>
+          </div>
+
+          <div class="div-grafic">
+            <div class="grafic1">Grafico de temperatura</div>
+            <div class="grafic2">Grafico de fluxo</div>
+          </div>
+
+        </div>
+      </section>
+  
+      <section class="sec-status">
+        <div class="status">
+          <h1>Aqui vem o alerta!</h1>
+        </div>
+        <div class="teste-div"><h1>Termometro - ilustrativo</h1></div>
+        <div class="teste-div"><h1>Rotametro - ilustrativo</h1></div>
+      </section>
+      
+    </div>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>

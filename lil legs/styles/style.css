@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E9E9E9;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+/* ---------------------------------------------------------- */
+  header{
+    background-color: #0F110C; 
+    display: flex;
+    justify-content: space-between;
+    height: 130px;
+    padding: 10px;
+  }
+  img{
+    width: 101px;
+    height: 101px;
+  } 
+  .logo{
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #btnHistorico {
+    background-color: white; /* Cor de fundo verde */
+    color: black; /* Texto em branco */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Transforma o cursor em ponteiro ao passar */
+    border-radius: 8px; /* Borda arredondada */
+    transition: background-color 0.3s ease; /* Transição suave de cor de fundo */
+  }
+  #btnHistorico:hover {
+    background-color: #210E68; /* Cor de fundo mais escura ao passar */
+    color: white;
+  }
+  .button-div{
+    height: 130px;
+    width:130px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 160px;
+  }
+/* ---------------------------------------------------------- */
+  .data-container {
+    display: flex;
+    gap: 60px;
+  }
+  .sensor-data-flow{
+    margin-top: 40px;
+    width: 45%;
+    height: 120px;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    border-radius: 20px;
+  }
+  .sensor-data-temp{
+    margin-top: 40px;
+    width: 45%;
+    height: 120px;
+    background-color: #FEE140;
+    background-image: linear-gradient(90deg, #FEE140 0%, #FA709A 100%);
+    border-radius: 20px;
+  }
+  #temperature, #flow {
+    font-size: 24px;
+    text-align: center;
+  }
+  .container-all{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 30px;
+  }
+  .grafic1{
+    background-color: #f9f9f9;
+    width: 45%;
+    height: 200px;
+    border-radius: 20px;
+  }
+  .grafic2{
+    background-color:#f9f9f9;
+    width: 45%;
+    height: 200px;
+    border-radius: 20px;
+  }
+  .status{
+    background-color: #eee7e7;
+    background-image: linear-gradient(0deg, #eee7e7 0%, #eef9f3 50%, #f0e4e9 100%);    
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+    color: black;
+  }
+  .div-grafic{
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+  }
+  .teste-div{
+    width: 250px;
+    height: 200px;
+    background-color: #eee7e7;
+    background-image: linear-gradient(0deg, #eee7e7 0%, #eef9f3 50%, #f0e4e9 100%);    
+    border-radius: 20px;
+    color: black;
+  }
+  .sec-info{
+    background-color: #eee7e7;
+    background-image: linear-gradient(0deg, #eee7e7 0%, #eef9f3 50%, #f0e4e9 100%);    
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .sec-status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    color: aliceblue;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+  }
+  /* ---------------------------------------------------------- */
+.div-leds{
+  display: flex;
+  gap: 50px;
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);  
+  padding: 20px;
+  border-radius: 20px;
+}
+.led-blue{
+  width: 101px;
+  height: 101px;
+  background-color: blue;
+  border-radius: 1000px;
+}
+.led-yellow{
+  width: 101px;
+  height: 101px;
+  background-color: yellow;
+  border-radius: 1000px;
+}
+.led-white{
+  width: 101px;
+  height: 101px;
+  background-color: white;
+  border-radius: 1000px;  
+}
+/* ---------------------------------------------------------- */
