@@ -17,7 +17,10 @@ const database = firebase.database();
 // Referências aos dados no Firebase
 const temperaturasRef = database.ref('historico-dados/temperaturas');
 const fluxosRef = database.ref('historico-dados/fluxos');
+const diaRef = database.ref('sensor-data/dia');
+const horaRef = database.ref('sensor-data/hora');
 
+// ------------------------------------------------------------------
 // Função para exibir histórico de temperaturas
 temperaturasRef.on('value', function(snapshot) {
     const historicoTemperaturas = document.getElementById('historico-temperaturas');

@@ -6,6 +6,7 @@
   <title>The Little Legs</title>
   <link rel="stylesheet" href="/styles/style.css">
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
 
@@ -26,20 +27,26 @@
           <div class="data-container">
             <div class="sensor-data-temp">
               <h2>Temperatura</h2>
-              <div id="temperature"></div>
+              <div class="arrumando">
+                <i class="fas fa-thermometer-half"></i>
+                <div id="temperature"></div>
+              </div>
             </div>
             <div class="sensor-data-flow">
               <h2>Fluxo do fluido</h2>
-              <div id="flow"></div>
+              <div class="arrumando">
+                <i class="fas fa-water"></i>
+                <div id="flow"></div>
+              </div>
             </div>
           </div>
 
           <div>
             <div class="div-leds">
               <h2>Led's</h2>
-              <div class="led-blue"></div>
               <div class="led-yellow"></div>
               <div class="led-white"></div>
+              <div class="led-blue"></div>
               <h2>Legenda</h2>
             </div>
           </div>
@@ -54,7 +61,9 @@
   
       <section class="sec-status">
         <div class="status">
-          <h1>Aqui vem o alerta!</h1>
+          <h1 class="mensagem1">Temperatura acima da media !</h1>
+          <h1 class="mensagem2">Fluxo demasiadamente elevado !</h1>
+          <h1 class="mensagem3">Tudo funcionado perfeitamente <3 </h1>
         </div>
         <div class="teste-div"><h1>Termometro - ilustrativo</h1></div>
         <div class="teste-div"><h1>Rotametro - ilustrativo</h1></div>

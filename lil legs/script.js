@@ -46,3 +46,39 @@ function updateFirebase(ref, data) {
         });
 }
 //---------------------------------------------------------------------------------------------------//
+const sensorDataRef = database.ref('sensor-data');
+// Elementos HTML
+const temperatureElement = document.getElementById('temperature');
+const flowElement = document.getElementById('flow');
+const mensagem1 = document.querySelector('.mensagem1');
+const mensagem2 = document.querySelector('.mensagem2');
+const mensagem3 = document.querySelector('.mensagem3');
+// Função para atualizar dados do sensor
+sensorDataRef.on('value', function(snapshot) {
+    const data = snapshot.val();
+    const temperature = data.temperature; // Supondo que a temperatura está em centésimos de grau
+    const flow = data.flow;
+    // Atualizar os elementos com os dados do sensor
+    temperatureElement.textContent = `${temperature.toFixed(2)} °C`; // Exibe o valor da temperatura com precisão total
+    flowElement.textContent = `${flow.toFixed(2)} M³/H`;
+    
+    // Lógica para exibir mensagens
+    let exibeMensagem1 = false;
+    let exibeMensagem2 = false;
+    if (temperature > 50) {
+        exibeMensagem1 = true;
+    }
+    if (flow > 7) {
+        exibeMensagem2 = true;
+    }
+    // Atualizar exibição das mensagens
+    mensagem1.style.display = exibeMensagem1 ? 'block' : 'none';
+    mensagem2.style.display = exibeMensagem2 ? 'block' : 'none';
+
+    if (!exibeMensagem1 && !exibeMensagem2) {
+        mensagem3.style.display = 'block';
+    } else {
+        mensagem3.style.display = 'none';
+    }
+});
+//---------------------------------------------------------------------------------------------------//

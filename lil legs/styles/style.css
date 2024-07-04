@@ -155,3 +155,27 @@ body {
   border-radius: 1000px;  
 }
 /* ---------------------------------------------------------- */
+.arrumando{
+  display: flex;
+  justify-content: space-around;
+}
+.arrumando i{
+  font-size: 30px;
+  margin-left: 20px;
+}
+#flow{
+  margin-right: 100px;
+}
+#temperature{
+  margin-right: 100px;
+}
+
+.mensagem1{
+  display: none;
+}
+.mensagem2{
+  display: none;
+}
+.mensagem3{
+  display: none;
+}
