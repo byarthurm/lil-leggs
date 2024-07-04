@@ -32,10 +32,19 @@ body {
     justify-content: center;
     margin-right: 50px;
   }
-  #btnHistorico{
-    height: 40px;
+  .btn-historico {
+    display: inline-block;
+    padding: 10px 20px;
     border-radius: 30px;
     border: none;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-historico:hover {
+    background-color: #45a049;
   }
   .data-container {
     display: flex;
