@@ -213,3 +213,50 @@ sensorDataRef.on('value', function(snapshot) {
     // Atualizar LEDs
     updateLeds(temperature, flow);
 });
+
+// Termômetro
+var tempMax = 50;
+let thermometerLevel = document.getElementById('thermometerLevel');
+let temperatureDisplay = document.getElementById('temperatureDisplay');
+let temperatureCircle = document.getElementById('temperatureCircle');
+
+function updateThermometer(temp) {
+    let height = temp * 90 / tempMax;
+    if (height > 90) {
+        height = 90;
+    } else if (height < 13) {
+        height = 13;
+    }
+    thermometerLevel.style.height = height + 'px';
+    temperatureDisplay.textContent = temp + '°C';
+
+    if (temp > 50) {
+        thermometerLevel.classList.remove('bg-blue');
+        thermometerLevel.classList.add('bg-red');
+        temperatureCircle.classList.remove('bg-blue');
+        temperatureCircle.classList.add('bg-red');
+    } else {
+        thermometerLevel.classList.remove('bg-red');
+        thermometerLevel.classList.add('bg-blue');
+        temperatureCircle.classList.remove('bg-red');
+        temperatureCircle.classList.add('bg-blue');
+    }
+}
+
+// Observa mudanças na temperatura no Firebase
+temperatureRef.on('value', function(snapshot) {
+    const temperatureValue = snapshot.val();
+    if (temperatureValue !== null) {
+        updateThermometer(temperatureValue);
+        updateFirebase(database.ref('historico-dados/temperaturas'), temperatureValue);
+    }
+});
+
+// Atualização do valor de fluxo no Firebase
+flowRef.on('value', function(snapshot) {
+    const flowValue = snapshot.val();
+    if (flowValue !== null) {
+        document.getElementsByClassName('flow-text').textContent = flowValue.toFixed(2) + " M³/H";
+        updateFirebase(database.ref('historico-dados/fluxos'), flowValue); // Enviar para coleção 'fluxos' dentro de 'historico-dados'
+    }
+});

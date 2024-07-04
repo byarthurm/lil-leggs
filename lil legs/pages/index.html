@@ -63,15 +63,31 @@
       </section>
   
       <section class="sec-status">
+        
         <div class="status">
           <h1 class="mensagem1">Temperatura acima da media!</h1>
           <h1 class="mensagem2">Fluxo irregular!</h1>
           <h1 class="mensagem3">Tudo funcionado perfeitamente</h1>
-        </div>
-        <div class="teste-div"><h1>Termometro - ilustrativo</h1></div>
-        <div class="teste-div"><h1>Rotametro - ilustrativo</h1></div>
-      </section>
+      </div>
       
+      <div class="teste-div d-flex column center">
+      <h1>Temperatura</h1>
+          <div class="d-flex column center">
+              <div class="reto1 bg-white d-flex j-center a-bottom">
+                  <div id="thermometerLevel" class="reto2 bg-blue"></div>
+              </div>
+              <div class="redondo bg-white bola1 d-flex center">
+                  <div class="redondo bg-blue bola2 d-flex center" id="temperatureCircle"><p id="temperatureDisplay" class="temp">0°C</p></div>
+              </div>
+          </div>
+      </div> 
+
+      <div class="teste-div d-flex column center gap-p">
+        <h1>Fluxo de Flúido</h1>
+        <div class="drop d-flex center"><p class="flow-text">10 m³/h</p></div>
+    </div>     
+         
+      </section>
     </div>
   </main>
   <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>

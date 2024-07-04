@@ -103,10 +103,15 @@ body {
   .teste-div{
     width: 250px;
     height: 200px;
-    background-color: #eee7e7;
-    background-image: linear-gradient(0deg, #eee7e7 0%, #eef9f3 50%, #f0e4e9 100%);    
+    background-color: #704c4c;
     border-radius: 20px;
     color: black;
+  }
+  .gap-p {
+    gap: 30px;
+  }
+  h1 {
+    margin: 0;
   }
   .sec-info{
     background-color: #eee7e7;
@@ -115,8 +120,8 @@ body {
     border-radius: 20px;
   }
   .sec-status{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     gap: 30px;
@@ -178,4 +183,85 @@ body {
 }
 .mensagem3{
   display: none;
+}
+/* -------------------Termômetro--------------------- */
+.d-flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.redondo {
+  border-radius: 50%;
+}
+.bg-white {
+  background-color: white;
+}
+.bg-blue {
+  background-color: rgb(53, 141, 255);
+}
+.bg-red {
+  background-color: rgb(255, 0, 0);
+}
+.reto1 {
+  width: 43px;
+  height: 93px; 
+  position: relative;
+  bottom: -8px;
+  border-radius: 16px 16px 0 0;
+}
+.reto2 {
+  width: 30px; 
+  height: 90px; 
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  bottom: -3.5px;
+  transition: 0.5s ease;
+}
+.bola1 {
+  width: 66px;
+  height: 66px;
+}
+.bola2 {
+  width: 53px;
+  height: 53px;
+  transition: 0.5s ease;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+.j-center {
+  justify-content: center;
+}
+.temp {
+  color: white;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.5s ease;
+}
+.a-bottom {
+  align-items: flex-end;
+}
+/* ---------------------Gota----------------------- */
+.drop {
+  background-color: rgb(53, 141, 255);
+  height: 120px;
+  width: 120px;
+  border-radius: 0% 50% 50% 50%;
+  transform: rotate(45deg);
+  box-shadow: inset -25px 10px 0px -10px rgb(41, 112, 204);
+  transition: height 0.5s ease; /* Adiciona uma transição suave para a mudança de altura */
+}
+
+.drop-empty {
+  height: 10px; /* Altura mínima da gota quando o fluxo é 0 */
+}
+
+.flow-text {
+  transform: rotate(-45deg);
+  font-size: 23px;
+  color: white;
+  font-weight: bold;
 }
