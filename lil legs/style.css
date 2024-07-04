@@ -7,7 +7,7 @@ body {
   }
   
   header{
-    background-color: #39EBB7;
+    background-color: #39EBB7; 
     display: flex;
     justify-content: space-between;
     height: 130px;

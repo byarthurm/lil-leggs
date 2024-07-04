@@ -11,18 +11,19 @@
 <body>
 
   <header>
-    <div class="logo">
-      <img src="img/logo-lillegs.png" alt="">
-    </div>
-    <div class="button-div"> 
-      <a href="historico.html" class="btn-historico">Histórico</a>
-    </div>
+      <div class="logo">
+        <img src="img/logo-lillegs.png" alt="">
+      </div>
+      <div class=button-div> 
+        <button id="btnHistorico">Histórico</button>
+      </div>
   </header>
 
   <main>
     <div class="container-all">
       <section class="sec-info">
         <div class="container">
+
           <div class="data-container">
             <div class="sensor-data">
               <h2>Temperatura</h2>
@@ -33,10 +34,12 @@
               <div id="flow"></div>
             </div>
           </div>
+
           <div class="div-grafic">
             <div class="grafic1"><div id="chart"></div></div>
             <div class="grafic2"><h1>grafic2</h1></div>
           </div>
+
         </div>
       </section>
   
@@ -47,9 +50,9 @@
         <div class="teste-div"><h1>teste</h1></div>
         <div class="teste-div"><h1>teste</h1></div>
       </section>
+      
     </div>
   </main>
-
   <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
   <script src="script.js"></script>
 </body>
