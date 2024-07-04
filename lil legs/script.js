@@ -157,3 +157,59 @@ function fetchDataAndUpdateCharts() {
 
 // Atualiza os dados a cada segundo
 setInterval(fetchDataAndUpdateCharts, 1000);
+//////////////////////////////////////////////////////////////////////////////////
+// Elementos dos LEDs
+const ledBlue = document.querySelector('.led-blue');
+const ledYellow = document.querySelector('.led-yellow');
+const ledWhite = document.querySelector('.led-white');
+
+// Função para atualizar os LEDs
+function updateLeds(temperature, flow) {
+    let isBlueVisible = false;
+    let isYellowVisible = false;
+    let isWhiteVisible = false;
+
+    if (temperature <= 50 && flow <= 7 && flow != 0) {
+        isBlueVisible = true;
+    } else {
+        if (temperature > 50) {
+            isYellowVisible = true;
+        }
+        if (flow > 7 || flow == 0) {
+            isWhiteVisible = true;
+        }
+    }
+
+    // Atualizar visibilidade dos LEDs
+    ledBlue.style.display = isBlueVisible ? 'block' : 'none';
+    ledYellow.style.display = isYellowVisible ? 'block' : 'none';
+    ledWhite.style.display = isWhiteVisible ? 'block' : 'none';
+}
+
+// Função para obter dados do sensor e atualizar os LEDs
+sensorDataRef.on('value', function(snapshot) {
+    const data = snapshot.val();
+    const temperature = data.temperature; // Convertendo centésimos de grau para graus
+    const flow = data.flow;
+
+    // Atualizar os elementos com os dados do sensor
+    temperatureElement.textContent = `${temperature.toFixed(2)} °C`;
+    flowElement.textContent = `${flow.toFixed(2)} M³/H`;
+
+    // Lógica para exibir mensagens
+    let exibeMensagem1 = false;
+    let exibeMensagem2 = false;
+    if (temperature > 50) {
+        exibeMensagem1 = true;
+    }
+    if (flow > 7 || flow === 0) {
+        exibeMensagem2 = true;
+    }
+    // Atualizar exibição das mensagens
+    mensagem1.style.display = exibeMensagem1 ? 'block' : 'none';
+    mensagem2.style.display = exibeMensagem2 ? 'block' : 'none';
+    mensagem3.style.display = (!exibeMensagem1 && !exibeMensagem2) ? 'block' : 'none';
+
+    // Atualizar LEDs
+    updateLeds(temperature, flow);
+});
