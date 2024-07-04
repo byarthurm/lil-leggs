@@ -82,3 +82,78 @@ sensorDataRef.on('value', function(snapshot) {
     }
 });
 //---------------------------------------------------------------------------------------------------//
+// Inicialização dos gráficos
+const ctx1 = document.getElementById('myChart1').getContext('2d');
+const myChart1 = new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: [], // Labels iniciais vazios
+        datasets: [{
+            label: 'Temperatura',
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: []
+        }]
+    },
+    options: {
+        legend: { display: false },
+        scales: {
+            yAxes: [{ ticks: { min: 0, max: 50 } }],
+        }
+    }
+});
+
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: [], // Labels iniciais vazios
+        datasets: [{
+            label: 'Fluxo',
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1.0)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: []
+        }]
+    },
+    options: {
+        legend: { display: false },
+        scales: {
+            yAxes: [{ ticks: { min: 0, max: 50 } }],
+        }
+    }
+});
+
+// Função para atualizar o gráfico
+function updateChart(chart, value) {
+    if (chart.data.labels.length >= 10) { // Limita o histórico a 10 valores
+        chart.data.labels.shift(); // Remove o label mais antigo
+        chart.data.datasets[0].data.shift(); // Remove o dado mais antigo
+    }
+    chart.data.labels.push(chart.data.labels.length + 1); // Adiciona um novo label
+    chart.data.datasets[0].data.push(value); // Adiciona o novo valor ao dataset
+    chart.update(); // Atualiza o gráfico
+}
+
+// Função para obter dados do Firebase e atualizar os gráficos
+function fetchDataAndUpdateCharts() {
+    temperatureRef.once('value', function(snapshot) {
+        const temperatureValue = snapshot.val();
+        if (temperatureValue !== null && !listatemp.includes(temperatureValue)) {
+            updateChart(myChart1, temperatureValue); // Atualiza o gráfico de temperatura
+        }
+    });
+
+    flowRef.once('value', function(snapshot) {
+        const flowValue = snapshot.val();
+        if (flowValue !== null && !listaflow.includes(flowValue)) {
+            updateChart(myChart2, flowValue); // Atualiza o gráfico de fluxo
+        }
+    });
+}
+
+// Atualiza os dados a cada segundo
+setInterval(fetchDataAndUpdateCharts, 1000);
