@@ -74,7 +74,7 @@ temperatureRef.on('value', function(snapshot) {
 flowRef.on('value', function(snapshot) {
     const flowValue = snapshot.val();
     if (flowValue !== null && !listaflow.includes(flowValue)) {
-        document.getElementById('flow').textContent = flowValue.toFixed(2) + " L/min";
+        document.getElementById('flow').textContent = flowValue.toFixed(2) + " m³/h";
         updateFirebase(database.ref('historico-dados/fluxos'), flowValue); // Enviar para coleção 'fluxos' dentro de 'historico-dados'
     }
 });
@@ -88,3 +88,77 @@ function updateFirebase(ref, data) {
             console.error('Erro ao enviar dados para o Firebase:', error);
         });
 }
+// ---------------------------------------------------------------------------
+// Defina os seus dados aqui
+var data = []; 
+var lastDate = new Date().getTime(); // Defina a última data aqui
+var XAXISRANGE = 777600000; // Defina o intervalo do eixo X
+
+var options = {
+    series: [{
+        data: data.slice()
+    }],
+    chart: {
+        id: 'realtime',
+        height: 200,
+        type: 'line',
+        animations: {
+            enabled: true,
+            easing: 'linear',
+            dynamicAnimation: {
+                speed: 1000
+            }
+        },
+        toolbar: {
+            show: false
+        },
+        zoom: {
+            enabled: false
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        curve: 'smooth'
+    },
+    title: {
+        text: 'Grafico de variação da temperatura',
+        align: 'left'
+    },
+    markers: {
+        size: 0
+    },
+    xaxis: {
+        type: 'datetime',
+        range: XAXISRANGE,
+    },
+    yaxis: {
+        max: 100
+    },
+    legend: {
+        show: false
+    },
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+
+function getNewSeries(baseval, yrange) {
+    var newDate = baseval + 86400000;
+    lastDate = newDate;
+
+    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    data.push([newDate, y]);
+}
+
+window.setInterval(function () {
+    getNewSeries(lastDate, {
+        min: 10,
+        max: 90
+    });
+
+    chart.updateSeries([{
+        data: data
+    }]);
+}, 1000);
