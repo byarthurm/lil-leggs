@@ -167,7 +167,6 @@ h1{
   margin: 0;
 }
 /* ---------------------------------------------------------- */
-<<<<<<< Updated upstream
 .arrumando{
   display: flex;
   justify-content: space-around;
@@ -193,8 +192,6 @@ h1{
   display: none;
 }
 /* -------------------Termômetro--------------------- */
-=======
->>>>>>> Stashed changes
 .d-flex {
   display: flex;
 }
@@ -253,7 +250,6 @@ h1{
 }
 .a-bottom {
   align-items: flex-end;
-<<<<<<< Updated upstream
 }
 /* ---------------------Gota----------------------- */
 .drop {
@@ -275,6 +271,4 @@ h1{
   font-size: 23px;
   color: white;
   font-weight: bold;
-=======
->>>>>>> Stashed changes
 }
