@@ -92,8 +92,8 @@ const myChart1 = new Chart(ctx1, {
             label: 'Temperatura',
             fill: false,
             lineTension: 0,
-            backgroundColor: "rgba(0,0,255,1.0)",
-            borderColor: "rgba(0,0,255,0.1)",
+            backgroundColor: "rgba(255,165,0,1.0)", // Laranja
+            borderColor: "rgba(255,140,0,1.0)", // Laranja forte
             data: []
         }]
     },
@@ -101,6 +101,16 @@ const myChart1 = new Chart(ctx1, {
         legend: { display: false },
         scales: {
             yAxes: [{ ticks: { min: 0, max: 50 } }],
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'minute',
+                    tooltipFormat: 'HH:mm',
+                    displayFormats: {
+                        minute: 'HH:mm'
+                    }
+                }
+            }]
         }
     }
 });
@@ -114,8 +124,8 @@ const myChart2 = new Chart(ctx2, {
             label: 'Fluxo',
             fill: false,
             lineTension: 0,
-            backgroundColor: "rgba(0,0,255,1.0)",
-            borderColor: "rgba(0,0,255,0.1)",
+            backgroundColor: "rgba(0,0,255,1.0)", // Azul forte
+            borderColor: "rgba(0,0,139,1.0)", // Azul mais escuro
             data: []
         }]
     },
@@ -123,9 +133,28 @@ const myChart2 = new Chart(ctx2, {
         legend: { display: false },
         scales: {
             yAxes: [{ ticks: { min: 0, max: 50 } }],
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'minute',
+                    tooltipFormat: 'HH:mm',
+                    displayFormats: {
+                        minute: 'HH:mm'
+                    }
+                }
+            }]
         }
     }
 });
+
+// Função para obter o horário atual em Brasília
+function getBrasiliaTime() {
+    const now = new Date();
+    const brasiliaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+    const hours = brasiliaTime.getHours().toString().padStart(2, '0');
+    const minutes = brasiliaTime.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
 
 // Função para atualizar o gráfico
 function updateChart(chart, value) {
@@ -133,7 +162,7 @@ function updateChart(chart, value) {
         chart.data.labels.shift(); // Remove o label mais antigo
         chart.data.datasets[0].data.shift(); // Remove o dado mais antigo
     }
-    chart.data.labels.push(chart.data.labels.length + 1); // Adiciona um novo label
+    chart.data.labels.push(getBrasiliaTime()); // Adiciona um novo label com horário de Brasília
     chart.data.datasets[0].data.push(value); // Adiciona o novo valor ao dataset
     chart.update(); // Atualiza o gráfico
 }
