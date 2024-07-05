@@ -25,9 +25,15 @@ const horaRef = database.ref('sensor-data/hora');
 temperaturasRef.on('value', function(snapshot) {
     const historicoTemperaturas = document.getElementById('historico-temperaturas');
     historicoTemperaturas.innerHTML = ''; // Limpa a lista antes de atualizar
-
+    
+    let temperaturas = [];
     snapshot.forEach(function(childSnapshot) {
-        const temperatura = childSnapshot.val();
+        temperaturas.push(childSnapshot.val());
+    });
+    
+    temperaturas.reverse(); // Inverte a ordem dos dados
+    
+    temperaturas.forEach(function(temperatura) {
         const li = document.createElement('li');
         li.textContent = temperatura.toFixed(2) + " °C";
         historicoTemperaturas.appendChild(li);
@@ -38,9 +44,15 @@ temperaturasRef.on('value', function(snapshot) {
 fluxosRef.on('value', function(snapshot) {
     const historicoFluxos = document.getElementById('historico-fluxos');
     historicoFluxos.innerHTML = ''; // Limpa a lista antes de atualizar
-
+    
+    let fluxos = [];
     snapshot.forEach(function(childSnapshot) {
-        const fluxo = childSnapshot.val();
+        fluxos.push(childSnapshot.val());
+    });
+    
+    fluxos.reverse(); // Inverte a ordem dos dados
+    
+    fluxos.forEach(function(fluxo) {
         const li = document.createElement('li');
         li.textContent = fluxo.toFixed(2) + " M³/H";
         historicoFluxos.appendChild(li);
