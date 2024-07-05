@@ -1,17 +1,25 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #E9E9E9;
+    font-family: "Nunito", sans-serif;
+    background-color: #131313;
     text-align: center;
     margin: 0;
     padding: 0;
   }
+
+:root {
+  --white: white;
+  --cinza-bg: #eeeeee;
+  --preto: black;
+  --roxo: #210e68;
+  --cinza-escuro: #131313;
+}
 /* ---------------------------------------------------------- */
   header{
-    background-color: #121212; 
+    background-color: var(--roxo); 
     display: flex;
     justify-content: space-between;
     height: 130px;
-    padding: 10px;
+    padding: 10px 40px;
   }
   img{
     width: 101px;
@@ -24,34 +32,33 @@ body {
     align-items: center;
   }
   #btnHistorico {
-    background-color: white; /* Cor de fundo verde */
-    color: black; /* Texto em branco */
-    border: none; /* Remove a borda */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Transforma o cursor em ponteiro ao passar */
-    border-radius: 8px; /* Borda arredondada */
-    transition: background-color 0.3s ease; /* Transição suave de cor de fundo */
+    background-color: var(--white); 
+    color: none;
+    border: 4px solid var(--white);
+    padding: 10px 22px;
+    font-size: 18px;
+    text-transform: uppercase; 
+    font-weight: bold;
+    cursor: pointer; 
+    border-radius: 30px; 
+    transition: background-color 0.2s ease;
   }
   #btnHistorico:hover {
-    background-color: #210E68; /* Cor de fundo mais escura ao passar */
-    color: white;
+    background-color: var(--roxo);
+    color: var(--white);
   }
   .button-div{
-    height: 130px;
-    width:130px;
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-right: 20px;
   }
 /* ---------------------------------------------------------- */
   .data-container {
     display: flex;
     gap: 60px;
+    width: 90%;
   }
   .sensor-data-flow{
-    margin-top: 40px;
     width: 45%;
     height: 120px;
     background-color: #8EC5FC;
@@ -59,7 +66,6 @@ body {
     border-radius: 20px;
   }
   .sensor-data-temp{
-    margin-top: 40px;
     width: 45%;
     height: 120px;
     background-color: #FEE140;
@@ -71,24 +77,24 @@ body {
     text-align: center;
   }
   .container-all{
-    display: grid;
+    display: flex;
     grid-template-columns: 2fr 1fr;
-    padding: 30px;
+    justify-content: space-between;
+    margin: 2% 5%;
   }
-  .grafic1{
-    background-color: #f9f9f9;
-    width: 45%;
-    height: 200px;
+  .grafic{
+    background-color: var(--cinza-escuro);
+    width: calc(45% - 30px);
+    height: 280px;
+    padding: 20px;
     border-radius: 20px;
-  }
-  .grafic2{
-    background-color:#f9f9f9;
-    width: 45%;
-    height: 200px;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .status{
-    background-color: #eee7e7;
+    background-color: var(--cinza-bg);
     background-image: linear-gradient(0deg, #eee7e7 0%, #eef9f3 50%, #f0e4e9 100%);    
     width: 250px;
     height: 200px;
@@ -98,27 +104,33 @@ body {
   .div-grafic{
     display: flex;
     flex-direction: row;
+    width: 90%;
     gap: 60px;
   }
-
   .teste-div{
-    width: 250px;
-    height: 200px;
-    background-color: #704c4c;
+    width: 300px;
+    height: 270px;
+    background-color: var(--cinza-bg);
     border-radius: 20px;
     color: black;
+    padding: 10px;
   }
   .gap-p {
-    gap: 30px;
+    gap: 45px;
   }
   h1 {
     margin: 0;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    color: black;
+    font-size: 50px;
+    margin-bottom: 40px;
   }
   .sec-info{
-    background-color: #eee7e7;
-    background-image: linear-gradient(0deg, #eee7e7 0%, #eef9f3 50%, #f0e4e9 100%);    
+    background-color: var(--cinza-bg);   
     padding: 20px;
     border-radius: 20px;
+    width: 75%;
   }
   .sec-status{
     display: grid;
@@ -126,7 +138,8 @@ body {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    color: aliceblue;
+    color: var(--white);
+    width: 300px;
   }
   .container{
     display: flex;
@@ -137,12 +150,13 @@ body {
 .div-leds{
   display: flex;
   gap: 50px;
-  background-color: #121212;
-  padding: 20px;
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);  
+  padding: 20px 0;
+  width: 90%;
   border-radius: 20px;
-}
-.div-leds h2 {
-  color: white;
+  align-items: center;
+  justify-content: center;
 }
 .led-blue{
   width: 101px;
@@ -159,12 +173,8 @@ body {
 .led-white{
   width: 101px;
   height: 101px;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 1000px;  
-}
-
-h1{
-  margin: 0;
 }
 /* ---------------------------------------------------------- */
 .arrumando{
@@ -173,15 +183,10 @@ h1{
 }
 .arrumando i{
   font-size: 30px;
-  margin-left: 20px;
 }
-#flow{
-  margin-right: 100px;
+.gap-pp {
+  gap: 10px;
 }
-#temperature{
-  margin-right: 100px;
-}
-
 .mensagem1{
   display: none;
 }
@@ -199,7 +204,7 @@ h1{
   flex-direction: column;
 }
 .redondo {
-  border-radius: 50%;
+  border-radius: 67.5%;
 }
 .bg-white {
   background-color: white;
@@ -211,28 +216,28 @@ h1{
   background-color: rgb(255, 0, 0);
 }
 .reto1 {
-  width: 43px;
-  height: 93px; 
+  width: 58.05px;
+  height: 125.55px;
   position: relative;
-  bottom: -8px;
-  border-radius: 16px 16px 0 0;
+  bottom: -10.8px;
+  border-radius: 21.6px 21.6px 0 0;
 }
 .reto2 {
-  width: 30px; 
-  height: 90px; 
-  border-radius: 10px 10px 0 0;
+  width: 40.5px;
+  height: 121.5px;
+  border-radius: 13.5px 13.5px 0 0;
   position: relative;
-  bottom: -3.5px;
-  transition: 0.5s ease;
+  bottom: -4.725px;
+  transition: 0.675s ease;
 }
 .bola1 {
-  width: 66px;
-  height: 66px;
+  width: 100px;
+  height: 100px;
 }
 .bola2 {
-  width: 53px;
-  height: 53px;
-  transition: 0.5s ease;
+  width: 82px;
+  height: 82px;
+  transition: 0.675s ease;
 }
 
 .center {
@@ -242,33 +247,67 @@ h1{
 .j-center {
   justify-content: center;
 }
+.a-center {
+  align-items: center;
+}
+.s-between {
+  justify-content: space-between;
+}
 .temp {
   color: white;
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  transition: 0.5s ease;
+  font-size: 22px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
 }
 .a-bottom {
   align-items: flex-end;
 }
+
 /* ---------------------Gota----------------------- */
 .drop {
   background-color: rgb(53, 141, 255);
-  height: 120px;
-  width: 120px;
+  height: 162px;
+  width: 162px;
   border-radius: 0% 50% 50% 50%;
   transform: rotate(45deg);
-  box-shadow: inset -25px 10px 0px -10px rgb(41, 112, 204);
-  transition: height 0.5s ease; /* Adiciona uma transição suave para a mudança de altura */
+  box-shadow: inset -33.75px 13.5px 0px -13.5px rgb(41, 112, 204);
+  transition: height 0.675s ease;
 }
 
 .drop-empty {
-  height: 10px; /* Altura mínima da gota quando o fluxo é 0 */
+  height: 13.5px;
 }
 
 .flow-text {
   transform: rotate(-45deg);
-  font-size: 23px;
+  font-size: 27px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
   color: white;
   font-weight: bold;
+}
+
+h2,h3,h4{
+  margin: 0;
+}
+h3{
+  font-weight: 700;
+  color: var();
+  font-size: 27px;
+  color:var(--cinza-escuro);
+}
+
+h4 {
+  font-size: 25px;
+  letter-spacing: 1px;
+  color: var(--cinza-escuro);
+  font-weight: 700;
+}
+
+h2 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  font-size: 27px;
 }

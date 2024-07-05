@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Little Legs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="../styles/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -20,40 +25,44 @@
 
   <main>
     <div class="container-all">
-      <section class="sec-info">
-        <div class="container">
-
-          <div class="data-container">
-            <div class="sensor-data-temp">
+      <section class="sec-info d-flex column j-center">
+        <h1>Dashboard</h1>
+        <div class="container d-flex column a-center j-center">
+          <div class="data-container a-center s-between">
+            <div class="sensor-data-temp d-flex column center">
               <h2>Temperatura</h2>
               <div class="arrumando">
-                <i class="fas fa-thermometer-half"></i>
-                <div id="temperature"></div>
+                <div class="d-flex gap-pp">
+                  <i class="fas fa-thermometer-half"></i>
+                  <div id="temperature"></div>
+                </div>
               </div>
             </div>
-            <div class="sensor-data-flow">
-              <h2>Fluxo do fluido</h2>
+            <div class="sensor-data-flow d-flex column center">
+              <h2>Fluxo do Flúido</h2>
               <div class="arrumando">
-                <i class="fas fa-water"></i>
-                <div id="flow"></div>
+                <div class="d-flex gap-pp">
+                  <i class="fas fa-water"></i>
+                  <div id="flow"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div>
-            <div class="div-leds">
-              <h2>LEDs</h2>
-              <div class="led-blue" style="display: none;"></div>
-              <div class="led-yellow" style="display: none;"></div>
-              <div class="led-white" style="display: none;"></div>
-          </div>
+          <div class="div-leds">
+            <h2>LEDs</h2>
+            <div class="led-blue" style="display: none;"></div>
+            <div class="led-yellow" style="display: none;"></div>
+            <div class="led-white" style="display: none;"></div>
           </div>
 
-          <div class="div-grafic">
-            <div class="grafic1">Grafico de temperatura
+          <div class="div-grafic center">
+            <div class="grafic">
+              <p>Gráfico de Temperatura</p>
               <canvas id="myChart1" style="width: 100%; max-width: 600px"></canvas>
             </div>
-            <div class="grafic2">Grafico de fluxo
+            <div class="grafic">
+              <p>Gráfico de Fluxo</p>
               <canvas id="myChart2" style="width: 100%; max-width: 600px"></canvas>
             </div>
           </div>
@@ -63,14 +72,14 @@
   
       <section class="sec-status">
         
-        <div class="status">
-          <h1 class="mensagem1">Temperatura acima da media!</h1>
-          <h1 class="mensagem2">Fluxo irregular!</h1>
-          <h1 class="mensagem3">Tudo funcionado perfeitamente</h1>
+        <div class="teste-div d-flex column center gap-p">
+          <h4 class="mensagem1">Temperatura acima da media!</h4>
+          <h4 class="mensagem2">Fluxo irregular!</h4>
+          <h4 class="mensagem3">Tudo funcionado perfeitamente</h4>
       </div>
-
+      
       <div class="teste-div d-flex column center">
-      <h1>Temperatura</h1>
+      <h3>Temperatura</h3>
           <div class="d-flex column center">
               <div class="reto1 bg-white d-flex j-center a-bottom">
                   <div id="thermometerLevel" class="reto2 bg-blue"></div>
@@ -82,15 +91,14 @@
       </div> 
 
       <div class="teste-div d-flex column center gap-p">
-        <h1>Fluxo de Flúido</h1>
+        <h3>Fluxo de Flúido</h3>
         <div class="drop d-flex center"><p class="flow-text">10 m³/h</p></div>
     </div>     
          
       </section>
     </div>
   </main>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
   <script src="../script.js"></script>
 </body>
 </html>
