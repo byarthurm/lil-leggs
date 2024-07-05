@@ -223,7 +223,7 @@ sensorDataRef.on('value', function(snapshot) {
 
     // Atualizar os elementos com os dados do sensor
     temperatureElement.textContent = `${temperature.toFixed(2)} °C`;
-    flowElement.textContent = `${flow.toFixed(2)} M³/H`;
+    flowElement.textContent = `${flow.toFixed(2)} m³/h`;
 
     // Lógica para exibir mensagens
     let exibeMensagem1 = false;
