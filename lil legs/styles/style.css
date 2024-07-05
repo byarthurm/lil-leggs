@@ -41,11 +41,12 @@ body {
     font-weight: bold;
     cursor: pointer; 
     border-radius: 30px; 
-    transition: background-color 0.2s ease;
+    transition: 0.3s ease;
   }
   #btnHistorico:hover {
     background-color: var(--roxo);
     color: var(--white);
+    transform: scale(1.1);
   }
   .button-div{
     align-items: center;
@@ -131,7 +132,7 @@ body {
   }
   .status-text {
     position: absolute;
-    top: 35%;
+    top: 195px;
     width: 20%;
     line-height: 90%;
   }
