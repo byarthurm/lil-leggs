@@ -221,9 +221,9 @@ let temperatureDisplay = document.getElementById('temperatureDisplay');
 let temperatureCircle = document.getElementById('temperatureCircle');
 
 function updateThermometer(temp) {
-    let height = temp * 121.5 / tempMax;
-    if (height > 121.5) {
-        height = 121.5;
+    let height = temp * 109.35 / tempMax;
+    if (height > 109.35) {
+        height = 109.35;
     } else if (height < 13) {
         height = 13;
     }
