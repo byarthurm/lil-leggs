@@ -11,7 +11,7 @@ const firebaseConfig = {
     databaseURL: "https://lil-legs-database-default-rtdb.firebaseio.com/"
 };
 
-// inicialização do firebase
+// Inicialização do firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 let listatemp = [];
@@ -20,25 +20,9 @@ let historicoVisivel = false; // Variável para controlar a visibilidade do hist
 const temperatureRef = database.ref('sensor-data/temperature');
 const flowRef = database.ref('sensor-data/flow');
 
-//pega o valor da temperatura
-temperatureRef.on('value', function(snapshot) {
-    const temperatureValue = snapshot.val();
-    if (temperatureValue !== null && !listatemp.includes(temperatureValue)) {
-        document.getElementById('temperature').textContent = temperatureValue.toFixed(2) + " °C";
-        updateFirebase(database.ref('historico-dados/temperaturas'), temperatureValue); // Enviar para coleção 'temperaturas' dentro de 'historico-dados'
-    }
-});
-//pega o valor de fluxo
-flowRef.on('value', function(snapshot) {
-    const flowValue = snapshot.val();
-    if (flowValue !== null && !listaflow.includes(flowValue)) {
-        document.getElementById('flow').textContent = flowValue.toFixed(2) + " M³/H";
-        updateFirebase(database.ref('historico-dados/fluxos'), flowValue); // Enviar para coleção 'fluxos' dentro de 'historico-dados'
-    }
-});
-//atualiza o bando de dados
+// Função para atualizar o banco de dados
 function updateFirebase(ref, data) {
-    ref.push(data)  // Usar push() para adicionar dados sem substituir os existentes
+    ref.push(data) // Usar push() para adicionar dados sem substituir os existentes
         .then(() => {
             console.log('Dados enviados para o Firebase com sucesso');
         })
@@ -46,15 +30,14 @@ function updateFirebase(ref, data) {
             console.error('Erro ao enviar dados para o Firebase:', error);
         });
 }
-//---------------------------------------------------------------------------------------------------//
-<<<<<<< Updated upstream
-const sensorDataRef = database.ref('sensor-data');
+
 // Elementos HTML
 const temperatureElement = document.getElementById('temperature');
 const flowElement = document.getElementById('flow');
 const mensagem1 = document.querySelector('.mensagem1');
 const mensagem2 = document.querySelector('.mensagem2');
 const mensagem3 = document.querySelector('.mensagem3');
+
 // Função para atualizar dados do sensor
 sensorDataRef.on('value', function(snapshot) {
     const data = snapshot.val();
@@ -63,7 +46,7 @@ sensorDataRef.on('value', function(snapshot) {
     // Atualizar os elementos com os dados do sensor
     temperatureElement.textContent = `${temperature.toFixed(2)} °C`; // Exibe o valor da temperatura com precisão total
     flowElement.textContent = `${flow.toFixed(2)} M³/H`;
-    
+
     // Lógica para exibir mensagens
     let exibeMensagem1 = false;
     let exibeMensagem2 = false;
@@ -76,14 +59,9 @@ sensorDataRef.on('value', function(snapshot) {
     // Atualizar exibição das mensagens
     mensagem1.style.display = exibeMensagem1 ? 'block' : 'none';
     mensagem2.style.display = exibeMensagem2 ? 'block' : 'none';
-
-    if (!exibeMensagem1 && !exibeMensagem2) {
-        mensagem3.style.display = 'block';
-    } else {
-        mensagem3.style.display = 'none';
-    }
+    mensagem3.style.display = (!exibeMensagem1 && !exibeMensagem2) ? 'block' : 'none';
 });
-//---------------------------------------------------------------------------------------------------//
+
 // Inicialização dos gráficos
 const ctx1 = document.getElementById('myChart1').getContext('2d');
 const myChart1 = new Chart(ctx1, {
@@ -145,6 +123,7 @@ function fetchDataAndUpdateCharts() {
     temperatureRef.once('value', function(snapshot) {
         const temperatureValue = snapshot.val();
         if (temperatureValue !== null && !listatemp.includes(temperatureValue)) {
+            listatemp.push(temperatureValue); // Adiciona à lista para evitar duplicação
             updateChart(myChart1, temperatureValue); // Atualiza o gráfico de temperatura
         }
     });
@@ -152,6 +131,7 @@ function fetchDataAndUpdateCharts() {
     flowRef.once('value', function(snapshot) {
         const flowValue = snapshot.val();
         if (flowValue !== null && !listaflow.includes(flowValue)) {
+            listaflow.push(flowValue); // Adiciona à lista para evitar duplicação
             updateChart(myChart2, flowValue); // Atualiza o gráfico de fluxo
         }
     });
@@ -159,6 +139,7 @@ function fetchDataAndUpdateCharts() {
 
 // Atualiza os dados a cada segundo
 setInterval(fetchDataAndUpdateCharts, 1000);
+
 //////////////////////////////////////////////////////////////////////////////////
 // Elementos dos LEDs
 const ledBlue = document.querySelector('.led-blue');
@@ -250,7 +231,10 @@ temperatureRef.on('value', function(snapshot) {
     const temperatureValue = snapshot.val();
     if (temperatureValue !== null) {
         updateThermometer(temperatureValue);
-        updateFirebase(database.ref('historico-dados/temperaturas'), temperatureValue);
+        if (!listatemp.includes(temperatureValue)) {
+            listatemp.push(temperatureValue);
+            updateFirebase(database.ref('historico-dados/temperaturas'), temperatureValue);
+        }
     }
 });
 
@@ -258,47 +242,10 @@ temperatureRef.on('value', function(snapshot) {
 flowRef.on('value', function(snapshot) {
     const flowValue = snapshot.val();
     if (flowValue !== null) {
-        document.getElementsByClassName('flow-text').textContent = flowValue.toFixed(2) + " M³/H";
-        updateFirebase(database.ref('historico-dados/fluxos'), flowValue); // Enviar para coleção 'fluxos' dentro de 'historico-dados'
+        flowElement.textContent = `${flowValue.toFixed(2)} M³/H`;
+        if (!listaflow.includes(flowValue)) {
+            listaflow.push(flowValue);
+            updateFirebase(database.ref('historico-dados/fluxos'), flowValue); // Enviar para coleção 'fluxos' dentro de 'historico-dados'
+        }
     }
 });
-=======
-
-        // Termômetro
-        var tempMax = 50;
-        let thermometerLevel = document.getElementById('thermometerLevel');
-        let temperatureDisplay = document.getElementById('temperatureDisplay');
-        let temperatureCircle = document.getElementById('temperatureCircle');
-
-        function updateThermometer(temp) {
-            let height = temp * 90 / tempMax;
-            if (height > 90) {
-                height = 90;
-            } else if (height < 13) {
-                height = 13;
-            }
-            thermometerLevel.style.height = height + 'px';
-            temperatureDisplay.textContent = temp + '°C';
-
-            if (temp > 50) {
-                thermometerLevel.classList.remove('bg-blue');
-                thermometerLevel.classList.add('bg-red');
-                temperatureCircle.classList.remove('bg-blue');
-                temperatureCircle.classList.add('bg-red');
-            } else {
-                thermometerLevel.classList.remove('bg-red');
-                thermometerLevel.classList.add('bg-blue');
-                temperatureCircle.classList.remove('bg-red');
-                temperatureCircle.classList.add('bg-blue');
-            }
-        }
-
-        // Observa mudanças na temperatura no Firebase
-        temperatureRef.on('value', function(snapshot) {
-            const temperatureValue = snapshot.val();
-            if (temperatureValue !== null) {
-                updateThermometer(temperatureValue);
-                updateFirebase(database.ref('historico-dados/temperaturas'), temperatureValue);
-            }
-        });
->>>>>>> Stashed changes
